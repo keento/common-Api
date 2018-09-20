@@ -1,6 +1,5 @@
-package com.common.api.excel;
+package com.common.api;
 
-import com.common.api.BaseBean;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.hssf.util.CellRangeAddress;
 import org.apache.poi.hssf.util.Region;
@@ -22,7 +21,6 @@ public class ExcelUtils {
      * @param MergedNameFields 要合并的属性名
      * @param dictMap 字典属性键值对，类型为嵌套map
      */
-    @SuppressWarnings({ "rawtypes", "unused" })
 	public static void ExportExcel(List list,String title, OutputStream fOut, List<String> MergedNameFields, Map<String,Map> dictMap){
         if(list==null || list.isEmpty())return;
         try{
@@ -30,7 +28,7 @@ public class ExcelUtils {
             HSSFSheet sheet = workbook.createSheet(title);//产生新的工作表对象
             Class cls=list.get(0).getClass();//获取List中的对象类型
             Field[] fields=cls.getDeclaredFields();
-            Map<String,Map> dataMap=new LinkedHashMap<>();
+            Map<String,Map> dataMap=new LinkedHashMap<String, Map>();
             Map<String,Object> map;
             for(Field f:fields){//遍历List类中的对象的属性数组
                 if(f.getAnnotation(Column.class)!=null){//如果该属性上含有注解
@@ -54,7 +52,7 @@ public class ExcelUtils {
             HSSFRow headerRow = sheet.createRow(1);//创建标题栏
             Set<String> names=dataMap.keySet();
             int cellIndex=0;
-            List<Integer> MergedIndex=new ArrayList<>();
+            List<Integer> MergedIndex=new ArrayList<Integer>();
             for(String name:names){//设置列名
                 HSSFCell cell = headerRow.createCell(cellIndex++);
                 cell.setCellType(HSSFCell.CELL_TYPE_STRING);
@@ -156,7 +154,7 @@ public class ExcelUtils {
 
     @SuppressWarnings("rawtypes")
 	private static Map ExcelMap(Field f,Field parent){
-        Map<String,Object> map=new HashMap<>();
+        Map<String,Object> map=new HashMap<String, Object>();
         map.put("field",f);
         if(parent!=null)map.put("parent",parent);
         String type=f.getAnnotation(Column.class).dictType();
