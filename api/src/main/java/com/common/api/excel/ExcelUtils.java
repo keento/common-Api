@@ -1,5 +1,6 @@
-package com.common.api;
+package com.common.api.excel;
 
+import com.common.api.BaseBean;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.hssf.util.CellRangeAddress;
 import org.apache.poi.hssf.util.Region;
