@@ -12,7 +12,7 @@ public interface BaseMapper<T extends BaseBean> {
 
     int updateByPrimaryKeySelective(T record);
 
-    int count(T t);
+    int count(@Param("query") T t);
 
-    List<T> query(@Param("query") BaseBean baseBean,@Param("pager") PageBean pb);
+    List<T> query(@Param("query") T t,@Param("pager") PageBean pb);
 }
