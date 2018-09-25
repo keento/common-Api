@@ -1,8 +1,9 @@
 package com.common.api;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class PageBean<T extends BaseBean> {
+public class PageBean<T extends BaseBean> implements Serializable {
     private int currPage = 1; // 当前页码
     private int pageSize = 10; // 每页行数
     private int total; // 总行数
