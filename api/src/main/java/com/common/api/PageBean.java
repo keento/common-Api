@@ -64,4 +64,12 @@ public class PageBean<T extends BaseBean> implements Serializable {
     public void setBeginIndex(int beginIndex) {
         this.beginIndex = beginIndex;
     }
+
+    public List<T> getList() {
+        return list;
+    }
+
+    public void setList(List<T> list) {
+        this.list = list;
+    }
 }
