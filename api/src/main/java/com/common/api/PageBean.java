@@ -2,7 +2,6 @@ package com.common.api;
 
 import java.io.Serializable;
 import java.util.List;
-
 public class PageBean<T extends BaseBean> implements Serializable {
     private int currPage = 1; // 当前页码
     private int pageSize = 10; // 每页行数
@@ -57,12 +56,32 @@ public class PageBean<T extends BaseBean> implements Serializable {
         this.pageSize = pageSize;
     }
 
+    public int getTotal() {
+        return total;
+    }
+
+    public int getPageCnt() {
+        return pageCnt;
+    }
+
+    public void setPageCnt(int pageCnt) {
+        this.pageCnt = pageCnt;
+    }
+
     public int getBeginIndex() {
         return beginIndex;
     }
 
     public void setBeginIndex(int beginIndex) {
         this.beginIndex = beginIndex;
+    }
+
+    public int getEndIndex() {
+        return endIndex;
+    }
+
+    public void setEndIndex(int endIndex) {
+        this.endIndex = endIndex;
     }
 
     public List<T> getList() {
